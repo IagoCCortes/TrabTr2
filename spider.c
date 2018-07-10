@@ -7,7 +7,7 @@ char fassets[100000];
 char mes[100000];
 int count;
 
-
+/*Faz o parser de mes para identificar os links a serem mostrados*/
 void parseMesS(char *mes, char *host){
 	char aux[100000];
 	int i = 0, j;
@@ -92,6 +92,7 @@ void parseMesS(char *mes, char *host){
 	//printf("%s\n", fassets);
 }
 
+/*E responsavel por fazer o request para o spider*/
 void getMesS(char *host, char *path, char *list){
 	int sockfd, port = 80, bytes, sent, received, total, first = 1;
 	strcpy(mes, "GET ");

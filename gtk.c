@@ -10,6 +10,8 @@ static GtkWidget *rqfield[100], *rpfield[100], *met, *pat, *ver, *grid, *vers, *
  *srequest, *sreply;
 int hcount;
 
+/*Quando o botao spider e clicado essa funcao e rodada para abrir uma nova janela e mostrar os links que saem da pagina no
+arquivo ref.txt*/
 void listSpider(GtkWidget *p_widget, gpointer data){
   GtkWidget *p_window, *swindow, *p_box, *p_text;
   p_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -41,6 +43,7 @@ void listSpider(GtkWidget *p_widget, gpointer data){
   gtk_widget_show_all(p_window);
 }
 
+/*Quando o botao send request e clicado essa funcao e rodada para enviar o request ao cliente*/
 void sendRequest(GtkWidget *srequest, gpointer data){
 	int i, j, pd;
 	FILE *fp;
@@ -77,6 +80,7 @@ void sendRequest(GtkWidget *srequest, gpointer data){
 	//so deixa enviar uma vez
 }
 
+/*Quando o botao send response e clicado essa funcao e rodada para enviar a response ao cliente*/
 void sendResponse(GtkWidget *sreply, gpointer data){
 	int i, j, pd;
 	FILE *fp;
@@ -114,6 +118,7 @@ void sendResponse(GtkWidget *sreply, gpointer data){
 	//so deixa enviar uma vez
 }
 
+/*Quando o botao receive request e clicado essa funcao e rodada para carregar a request na interface*/
 void setRequest(GtkWidget *rrequest, gpointer data){
 	int i, pd;
 	char method[1000], path[1000], version[1000];
@@ -142,6 +147,7 @@ void setRequest(GtkWidget *rrequest, gpointer data){
 	}
 }
 
+/*Quando o botao receive response e clicado essa funcao e rodada para carregar a response na interface*/
 void setResponse(GtkWidget *rreply, gpointer data){
 	int i, pd;
 	char version[1000], code[1000], desc[1000];
@@ -171,6 +177,7 @@ void setResponse(GtkWidget *rreply, gpointer data){
 	}
 }
 
+/*Inicializa os widgets utilizados na tela principal da interface gráfica e fica a espera de interacao com os botoes*/
 int main(int argc, char *argv[]){
 	GtkWidget *window, *spider, *dump, *scrollW;// *srequest, *sreply, *rrequest, *rreply;
 	gtk_init(&argc, &argv);

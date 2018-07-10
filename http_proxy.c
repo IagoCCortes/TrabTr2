@@ -22,6 +22,7 @@ typedef struct request{
 
 char mbuf[5000];
 
+/*Faz o parse da resposta do servidor e salva a mesma em um arquivo*/
 int parseResponse(char *buffer, int size){
 	char headerN[100][1000];
 	char headerV[100][1000];
@@ -125,6 +126,8 @@ Y:while(buffer[i] != ':'){
 	return size;
 }
 
+/*Faz conexao com o servidor do request, envia o request para este servidor recebe a resposta do servidor e a envia
+para o cliente(browser)*/
 int serverSocket(char *host, char *Buf, int client, int size){
 	struct addrinfo hints;
 	struct addrinfo *resp;
@@ -210,6 +213,7 @@ int serverSocket(char *host, char *Buf, int client, int size){
 	return fd_server;
 }
 
+/*Recebe uma request do cliente (browser), faz o parse e salva o mesmo em um arquivo*/
 int getHTTP(void* client, int pid){
 	char headerN[100][1000];
 	char headerV[100][1000];
@@ -401,6 +405,7 @@ X:while(buf[i] != ':'){
 	return 0;
 }
 
+/*Inicializa uma socket para ouvir requests do browser no endereço 127.0.0.1:8228*/
 int main(int argc, char *argv[]){
 	if(!fork()){
 		execl("./gtk", "./gtk", NULL);

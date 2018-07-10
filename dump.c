@@ -10,6 +10,7 @@ char mes[100000];
 int count;
 char status[100000];
 
+/*Cria os diretorios e salva os arquivos do dump neles*/
 void createF(char *path, char *resp, char *host){
 	int i = 0, j = 0;
 	struct stat st = {0};
@@ -71,6 +72,7 @@ void createF(char *path, char *resp, char *host){
 	fclose(fp);
 }
 
+/*Faz o parser de mes para identificar as pastas e arquivos a serem criados e baixadas respectivamente*/
 void parseMes(char *mes, char *host){
 	char aux[100000];
 	int i = 0, j;
@@ -153,6 +155,7 @@ void parseMes(char *mes, char *host){
 	}
 }
 
+/*Cria o diretorio raiz do dump e e responsavel por fazer todos os requests necessario para o dump*/
 void getMes(char *host, char *path){
 	char dir[1000];
 	strcat(dir,host);
@@ -266,6 +269,7 @@ void getMes(char *host, char *path){
 	}
 }
 
+/*Inicializa os widgets utilizados na tela de dump da interface gráfica*/
 void doDump(GtkWidget *p_widget, gpointer data){
   //GtkWidget *p_window, *swindow, *p_box, *p_text;
   p_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
